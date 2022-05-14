@@ -1,8 +1,5 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
-
 class ExampleTest extends TestCase
 {
     /**
@@ -12,10 +9,8 @@ class ExampleTest extends TestCase
      */
     public function testExample()
     {
-        $this->get('/');
+        $response = $this->call('GET', '/');
 
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
+        $this->assertEquals(200, $response->status());
     }
 }
